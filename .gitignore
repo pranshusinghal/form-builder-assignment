@@ -1,2 +1,4 @@
 venv
 formbuilder/formbuilder/__py*
+formbuilder/app/__py*
+formbuilder/app/migrations/__py*
