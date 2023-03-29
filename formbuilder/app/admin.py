@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Form, InputField, SelectField, Option
 
-# Register your models here.
+admin.site.register(Form)
+admin.site.register(InputField)
+admin.site.register(SelectField)
+admin.site.register(Option)
