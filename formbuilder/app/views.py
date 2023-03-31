@@ -46,8 +46,8 @@ class FormCreate(LoginRequiredMixin, CreateView):
 @login_required
 def edit_form(request, form_id):
     form = Form.objects.get(id=form_id)
-    input_fields = form.inputfield_set.all()
-    select_fields = form.selectfield_set.all()
+    input_fields = form.inputfield_set.all().order_by('field_name')
+    select_fields = form.selectfield_set.all().order_by('field_name')
     
     # select fields and corresponding options map
     select_options_map = {}
