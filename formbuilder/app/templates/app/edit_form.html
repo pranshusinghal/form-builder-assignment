@@ -4,11 +4,10 @@
 <h2>Form Template for {{ form.name }}</h2>
 <form method="post">
   {% csrf_token %}
-  
   <div>
     {% for field in input_fields %}
-      <label for={{field.id}}>{{field.label}}</label>
       {% if field.required %}
+        <label for={{field.id}} class="required">{{field.label}}</label>
         <input 
           type={{field.type}} 
           id={{field.id}} 
@@ -19,6 +18,7 @@
           required>
           <br>
       {% else %}
+        <label for={{field.id}}>{{field.label}}</label>
         <input 
           type={{field.type}} 
           id={{field.id}} 
@@ -32,19 +32,35 @@
     {% endfor %}
 
     {% for key, value in select_options_map.items %}
-      <label for={{key.0}}>{{key.1}}</label>
-      <select id={{key.0}} name={{key.0}} required>
-        <option value="">--  Select Option  --</option>
-        {% for option in value %}
-          <option value={{option.value}}>{{option.label}}</option>
-        {% endfor %}
-      </select><br>
+      {% if value.field_details.is_required %}
+        <label for="{{key}}" class="required">{{value.field_details.field_label}}</label>
+        <select 
+          id="{{key}}" 
+          name="{{value.field_details.field_name}}" 
+          required
+        >
+          <option value="">--  Select Option  --</option>
+          {% for option in value.options %}
+            <option value={{option.value}}>{{option.label}}</option>
+          {% endfor %}
+        </select><br>        
+      {% else %}
+        <label for="{{key}}">{{value.field_details.field_label}}</label>
+        <select 
+          id="{{key}}" 
+          name="{{value.field_details.field_name}}"
+        >
+          <option value="">--  Select Option  --</option>
+          {% for option in value.options %}
+            <option value={{option.value}}>{{option.label}}</option>
+          {% endfor %}
+        </select><br>
+      {% endif %}
     {% endfor %}
   </div>
 
   <div>
     <button type="submit">Submit</button>
   </div>
-
 </form>
 {% endblock %}

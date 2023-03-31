@@ -48,10 +48,18 @@ def edit_form(request, form_id):
     form = Form.objects.get(id=form_id)
     input_fields = form.inputfield_set.all()
     select_fields = form.selectfield_set.all()
+    
     # select fields and corresponding options map
     select_options_map = {}
     for field in select_fields:
-      select_options_map[(field.field_name, field.label)] = field.option_set.all()
+      select_options_map[field.id] = {
+         'options': field.option_set.all(),
+         'field_details': {
+            'field_name': field.field_name,
+            'field_label': field.label,
+            'is_required': field.required
+         }
+      }
 
     if request.method == 'POST':
       # if form gets submitted, then save the entered details inside FormConfig Table
