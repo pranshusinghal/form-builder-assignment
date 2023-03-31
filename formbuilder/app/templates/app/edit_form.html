@@ -1,46 +1,50 @@
 {% extends './base.html' %}
 
 {% block content %}
-<h1>{{ form.name }}</h1>
+<h2>Form Template for {{ form.name }}</h2>
 <form method="post">
   {% csrf_token %}
   
-  {% for field in input_fields %}
-    <label for={{field.id}}>{{field.label}}</label>
-    {% if field.required %}
-      <input 
-        type={{field.type}} 
-        id={{field.id}} 
-        name={{field.field_name}} 
-        placeholder="{{field.placeholder}}"
-        pattern="{{field.regex}}+"
-        title="{{field.regexErrorMessage}}. Input should be in range - {{field.regex}}"
-        required>
+  <div>
+    {% for field in input_fields %}
+      <label for={{field.id}}>{{field.label}}</label>
+      {% if field.required %}
+        <input 
+          type={{field.type}} 
+          id={{field.id}} 
+          name={{field.field_name}} 
+          placeholder="{{field.placeholder}}"
+          pattern="{{field.regex}}+"
+          title="{{field.regexErrorMessage}}. Input should be in range - {{field.regex}}"
+          required>
+          <br>
+      {% else %}
+        <input 
+          type={{field.type}} 
+          id={{field.id}} 
+          name={{field.field_name}} 
+          placeholder="{{field.placeholder}}"
+          pattern="{{field.regex}}+"
+          title="{{field.regexErrorMessage}}. Input should be in range - {{field.regex}}"
+          >
         <br>
-    {% else %}
-      <input 
-        type={{field.type}} 
-        id={{field.id}} 
-        name={{field.field_name}} 
-        placeholder="{{field.placeholder}}"
-        pattern="{{field.regex}}+"
-        title="{{field.regexErrorMessage}}. Input should be in range - {{field.regex}}"
-        >
-      <br>
-    {% endif %}
-  {% endfor %}
+      {% endif %}
+    {% endfor %}
 
-  {% for key, value in select_options_map.items %}
-    <label for={{key.0}}>{{key.1}}</label>
-    <select id={{key.0}} name={{key.0}} required>
-      <option value="">--  Select Option  --</option>
-      {% for option in value %}
-        <option value={{option.value}}>{{option.label}}</option>
-      {% endfor %}
-    </select><br>
-  {% endfor %}
+    {% for key, value in select_options_map.items %}
+      <label for={{key.0}}>{{key.1}}</label>
+      <select id={{key.0}} name={{key.0}} required>
+        <option value="">--  Select Option  --</option>
+        {% for option in value %}
+          <option value={{option.value}}>{{option.label}}</option>
+        {% endfor %}
+      </select><br>
+    {% endfor %}
+  </div>
 
-  <button type="submit">Submit</button>
-  
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+
 </form>
 {% endblock %}

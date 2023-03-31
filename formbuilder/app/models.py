@@ -4,9 +4,6 @@ from django.db import models
 class Form(models.Model):
     name = models.CharField(max_length=50)
 
-    def get_absolute_url(self):
-        return '/form/list'
-
     def __str__(self):
         return "Form - " + self.name
 

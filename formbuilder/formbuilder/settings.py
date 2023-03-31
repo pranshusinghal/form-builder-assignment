@@ -118,8 +118,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 LOGIN_URL = '/account/login'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'formlist'
+LOGOUT_REDIRECT_URL = 'formlist'
 
 CSRF_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SECURE = True

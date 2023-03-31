@@ -3,3 +3,6 @@ formbuilder/formbuilder/__py*
 formbuilder/app/__py*
 formbuilder/app/.DS_Store
 formbuilder/app/migrations/__py*
+formbuilder/.DS_Store
+formbuilder/app/migrations/.DS_Store
+.DS_Store

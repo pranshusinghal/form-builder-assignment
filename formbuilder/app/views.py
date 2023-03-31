@@ -17,20 +17,31 @@ class SignUp(CreateView):
 
 def logout_view(request):
   logout(request)
-  return redirect("home")
-
-@login_required
-def home(request):
-  context = {"name": request.user}
-  return render(request, "app/home.html", context)
+  return redirect("formlist")
 
 class FormList(LoginRequiredMixin, ListView):
+  def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        is_admin = self.request.user.is_superuser
+        context['is_admin'] = is_admin
+        context['user_name'] = self.request.user
+        return context
+  
   model = Form
 
 class FormCreate(LoginRequiredMixin, CreateView):
+  def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        is_admin = self.request.user.is_superuser
+        context['is_admin'] = is_admin
+        context['user_name'] = self.request.user
+        return context
+
   model = Form
   template_name = "app/create_form.html"
   form_class = FormCreateForm
+  success_url = "/"
+
 
 @login_required
 def edit_form(request, form_id):
@@ -47,7 +58,7 @@ def edit_form(request, form_id):
       payload = {}
       for key, value in request.POST.items():
         if key != "csrfmiddlewaretoken":
-          payload[key] = False if value=="on" else value
+          payload[key] = True if value=="on" else value
       # saving the form details inside `FormConfig` Table
       form_config = FormConfig()
       form_config.form = form
@@ -58,6 +69,7 @@ def edit_form(request, form_id):
 
     return render(request, 'app/edit_form.html', 
                 {
+                'user_name': request.user,
                 'form': form, 
                 'input_fields': input_fields, 
                 'select_options_map': select_options_map
@@ -65,6 +77,13 @@ def edit_form(request, form_id):
             )
 
 class FormDelete(LoginRequiredMixin, DeleteView):
+  def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        is_admin = self.request.user.is_superuser
+        context['is_admin'] = is_admin
+        context['user_name'] = self.request.user
+        return context
+  
   model = Form
   template_name = "app/delete_form.html"
-  success_url = "/form/list"
+  success_url = "/"
