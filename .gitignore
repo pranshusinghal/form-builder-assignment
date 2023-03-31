@@ -1,5 +1,6 @@
 venv
 formbuilder/formbuilder/__py*
+formbuilder/formbuilder/static
 formbuilder/app/__py*
 formbuilder/app/.DS_Store
 formbuilder/app/migrations/__py*

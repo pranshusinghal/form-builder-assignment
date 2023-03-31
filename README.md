@@ -18,6 +18,11 @@
     - Handle DB Migrations
         - python manage.py migrate
         - python manage.py runserver <optional_port_number>
+    
+    - Handle static files in project
+        - update PROJECT_DIR and STATIC_ROOT in settings.py file
+        - python manage.py collectstatic 
+    NOTE: It's a good practice to add the STATIC_ROOT directory to your .gitignore file to avoid committing the static files to your repository.
 
     - Create Superuser
         - python manage.py createsuperuser
