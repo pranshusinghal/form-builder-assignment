@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 """ Form and Field are in One to Many relationship """
 class Form(models.Model):
@@ -48,6 +49,7 @@ class Option(models.Model):
         return self.select_field.form.name + " Option: " + self.label
 
 class FormConfig(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     form = models.ForeignKey(Form, on_delete=models.CASCADE)
     payload = models.JSONField()
 

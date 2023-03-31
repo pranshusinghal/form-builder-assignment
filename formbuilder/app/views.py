@@ -69,6 +69,7 @@ def edit_form(request, form_id):
           payload[key] = True if value=="on" else value
       # saving the form details inside `FormConfig` Table
       form_config = FormConfig()
+      form_config.user = request.user
       form_config.form = form
       form_config.payload = payload
       form_config.save()
