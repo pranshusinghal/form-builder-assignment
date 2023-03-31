@@ -4,7 +4,7 @@
 
 
 ## GIT Configuration on Local
-    - git clone 
+    - git clone https://github.com/<username>/form-builder-assignment.git
     - git config remote.origin.url "https://github.com/<username>/form-builder-assignment.git"
     - git config user.name <your_username>
     - git config user.email <your_email>
@@ -27,13 +27,16 @@
     - Create Superuser
         - python manage.py createsuperuser
 
-## Setup via. Docker
-    - Run Application inside Docker container
-        - sudo docker-compose build --no-cache
-        - sudo docker-compose up -d
-    
+## Setup via. Docker    
     - If you want to rebuild the container after making changes to your Dockerfile or docker-compose.yml file, you can run the following command:
         - docker-compose up --build
+    
+    - Run Application inside Docker container
+        - sudo docker-compose up -d
+
+    - Optional command(this command would ignore cache and build from scratch again)
+        - sudo docker-compose build --no-cache
+
 
 ## Useful Links for Project
     - Signup - http://127.0.0.1:8000/signup/
