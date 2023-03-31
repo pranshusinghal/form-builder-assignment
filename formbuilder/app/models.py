@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 """ Form and Field are in One to Many relationship """
 class Form(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
         return "Form - " + self.name
@@ -44,6 +44,11 @@ class Option(models.Model):
     select_field = models.ForeignKey(SelectField, on_delete=models.CASCADE)
     label = models.CharField(max_length=50)
     value = models.CharField(max_length=50)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['select_field', 'value'], name='unique_value_per_fk'),
+        ]
 
     def __str__(self):
         return self.select_field.form.name + " Option: " + self.label
