@@ -26,7 +26,14 @@
     - Run Application inside Docker container
         - sudo docker-compose build --no-cache
         - sudo docker-compose up -d
-        - Application will be running on -> <<localhost:8000>>
+    
+    - If you want to rebuild the container after making changes to your Dockerfile or docker-compose.yml file, you can run the following command:
+        - docker-compose up --build
+
+## Useful Links for Project
+    - Signup - http://127.0.0.1:8000/signup/
+    - Login - http://127.0.0.1:8000/account/login/?next=/
+    - Landing Page - http://127.0.0.1:8000/
 
 ## Contact
 Pranshu Singhal - singhalpranshu12@gmail.com
