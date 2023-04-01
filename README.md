@@ -37,6 +37,10 @@
     - Optional command(this command would ignore cache and build from scratch again)
         - sudo docker-compose build --no-cache
 
+## Website Screenshots
+![Login Page](https://github.com/pranshusinghal/form-builder-assignment/blob/main/formbuilder/login_page.png)
+![Landing Page](https://github.com/pranshusinghal/form-builder-assignment/blob/main/formbuilder/landing_page.png)
+![Form Fill Page](https://github.com/pranshusinghal/form-builder-assignment/blob/main/formbuilder/form_filling_page.png)
 
 ## Useful Links for Project
     - Signup - http://127.0.0.1:8000/signup/
