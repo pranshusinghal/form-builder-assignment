@@ -59,3 +59,7 @@ padding: 20px;
 .page-footer p {
 margin: 0;
 }
+
+ul.errorlist li {
+    color: red;
+}
