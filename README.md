@@ -26,6 +26,8 @@
 
     - Create Superuser
         - python manage.py createsuperuser
+    
+    - Clear your Browser Cache (cmd + shift + R), if static changes not getting reflected
 
 ## Setup via. Docker    
     - If you want to rebuild the container after making changes to your Dockerfile or docker-compose.yml file, you can run the following command:
@@ -36,6 +38,8 @@
 
     - Optional command(this command would ignore cache and build from scratch again)
         - sudo docker-compose build --no-cache
+
+    - Clear your Browser Cache (cmd + shift + R), if static changes not getting reflected
 
 ## Website Screenshots
 ![Login Page](https://github.com/pranshusinghal/form-builder-assignment/blob/main/formbuilder/login_page.png)
