@@ -2,9 +2,6 @@
 
 {% block content %}
 <h3>Welcome to Form Builder - {{user_name}}!</h3>
-{% if is_admin %}
-  <a href="{% url 'formcreate' %}"><button class="btn">Add Form</button></a>
-{% endif %}
 <div class="table-container">
   <table id="forms">
     <tr>
